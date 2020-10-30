@@ -7,6 +7,23 @@
  * 3. Install 'Minin | An audio library...'
  * *****************/
 boolean canPlaySound = true;
+// Uncomment the lines below if you can play sound
+/*
+import ddf.minim.*;
+Minim minim = new Minim(this);
+AudioPlayer rainSounds;
+
+void playRainSounds() {
+  if ( canPlaySound ) {
+    if( rainSounds == null ){
+      rainSounds = minim.loadFile("thunder.wav");
+    }
+    if ( ! this.rainSounds.isPlaying() ) {
+      this.rainSounds.loop();
+    }
+  }
+}
+*/
 
 Rain rainfall;
 Lightning lightning;
@@ -64,6 +81,7 @@ void draw() {
   //    methods here so they appear!
   
   // 9. Call rainfall.draw( <rainColor> ) to add rain.
+  //    Call playRainSounds() to add the sound of rain!
   
   // 10. Display "Happy Halloween" somewhere on your display.
   //     *hint* you can use text(), textSize(), and fill()

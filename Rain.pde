@@ -1,24 +1,10 @@
-import ddf.minim.*;
-Minim minim = new Minim(this); 
-
+ 
 public class Rain {
   private static final int MAX_RAIN_DROPS = 1000;
   private int amountOfRain = 350;
-  private AudioPlayer rainSounds = null;
   private ArrayList<Raindrop> drop = new ArrayList<Raindrop>(amountOfRain);
   private ArrayList<Splash> splash = new ArrayList<Splash>();
   private boolean initialized = false;
-
-  void playRainSounds() {
-    if ( canPlaySound ) {
-      if (this.rainSounds == null) {
-        this.rainSounds = minim.loadFile("thunder.wav");
-      }
-      if ( ! this.rainSounds.isPlaying() ) {
-        this.rainSounds.loop();
-      }
-    }
-  }
 
   void setAmountOfRain(int rain){
     if( rain > 0 && rain < MAX_RAIN_DROPS ){
