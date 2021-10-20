@@ -1,7 +1,7 @@
 public class Lightning {
   private float chaos = 0.25;
   private ArrayList<PVector> points;
-  private boolean lightningFlash = true;
+  private boolean lightningFlash = false;
 
   void setLightningFlash(boolean flash) {
     this.lightningFlash = flash;

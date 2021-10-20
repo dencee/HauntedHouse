@@ -2,9 +2,14 @@
 public class Rain {
   private static final int MAX_RAIN_DROPS = 1000;
   private int amountOfRain = 350;
+  private color rainColor = #ADD8E6; // light blue
   private ArrayList<Raindrop> drop = new ArrayList<Raindrop>(amountOfRain);
   private ArrayList<Splash> splash = new ArrayList<Splash>();
   private boolean initialized = false;
+
+  public Rain(color rainColor){
+    this.rainColor = rainColor;
+  }
 
   void setAmountOfRain(int rain){
     if( rain > 0 && rain < MAX_RAIN_DROPS ){
@@ -19,10 +24,8 @@ public class Rain {
     initialized = true;
   }
 
-  void draw(int rainColor) {
+  void draw() {
     push();
-    
-    playRainSounds();
 
     if ( !initialized ) {
       this.setup();

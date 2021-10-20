@@ -1,93 +1,137 @@
-/***********  SOUND ***************
- * Some computers are unable to play sounds. 
- * If you cannot play sound on this computer, set canPlaySounds to false.
- * To install ddf.minim:
- * 1. go to 'Tools' -> Add Tool -> select the 'Libraries' tab
- * 2. In the search box type 'minim'.
- * 3. Install 'Minin | An audio library...'
- * *****************/
-boolean canPlaySound = true;
-// Uncomment the lines below if you can play sound
-/*
-import ddf.minim.*;
-Minim minim = new Minim(this);
-AudioPlayer rainSounds;
-
-void playRainSounds() {
-  if ( canPlaySound ) {
-    if( rainSounds == null ){
-      rainSounds = minim.loadFile("thunder.wav");
-    }
-    if ( ! this.rainSounds.isPlaying() ) {
-      this.rainSounds.loop();
-    }
-  }
-}
-*/
-
+// Add your variables below!
+Pumpkin pumpkin1, pumpkin2, pumpkin3;
+Ghost ghost1, ghost2, ghost3;
 Rain rainfall;
 Lightning lightning;
 Spotlight spotlight;
 
-// When you get to step 7 you can add new Pumpkins and ghosts below!
-Pumpkin pumpkin1;
-Ghost ghost1;
+boolean grayscale = false;
 
-// ---------------------------------------------------------
-// 1. Make a PImage variable for the scary house background
-//    example: PImage scaryHouse
-// ---------------------------------------------------------
-
+// START HERE!
+//
+// Make a PImage variable for the scary house background
+//  example: PImage scaryHouse
+PImage scaryHouse;
 
 void setup() {
-  // 2. Set the size of your sketch to at least 600, 400 using
-  //    the size() method.
+  // Set the size of your sketch to at least 600, 400 using
+  // the size() method.
+  size(1200, 800);
   
-  // 3. Pick a scary house and initialize it using loadImage,
-  //    example: scaryHouse = loadImage("scaryHouse1.jpg");
+  // Pick a scary house and initialize it using loadImage,
+  //  example: scaryHouse = loadImage("scaryHouse1.jpg");
+  scaryHouse = loadImage("scaryHouse1.jpg");
   
-  // 4. Resize your scary house to the window size using
-  //    scaryHouse.resize(width, height);
+  // Resize your scary house to the window size using
+  //  scaryHouse.resize(width, height);
+  scaryHouse.resize(width, height);
   
+  // DRAWING THE SCARY HOUSE
+  //
+  // In the draw function below, call drawBackground() with your
+  // scary house as an input parameter
+  // Do you see your scary house??
   
-  // Pumpkin( x, pumpkinColor )
+  // DRAWING THE PUMPKINS
+  //
+  // Create a new variable for a pumpkin at the top of this sketch
+  // then initialize it to a new Pumpkin(x, pumpkinColor)
+  //   example: myPumpkin = Pumpkin(350, #E26238);
   pumpkin1 = new Pumpkin(350, #E26238);
+  pumpkin2 = new Pumpkin(550, #BE1DF0);
+  pumpkin3 = new Pumpkin(850, #1DF029);
   
-  // Ghost( y, speed, flyingDirection )
+  // In the draw function below, call the pumpkin's draw() method
+  // Do you see your pumpkin?
+  
+  // DRAWING THE GHOSTS
+  //
+  // Create a new variable for a ghost at the top of this sketch
+  // then initialize it to a new Ghost(y, speed, flyingDirection)
+  //   example: myGhost = Ghost(50, 5, "right");
   ghost1 = new Ghost(50, 5, "right");
+  ghost2 = new Ghost(10, 3, "right");
+  ghost3 = new Ghost(150, 8, "left");
   
-  rainfall = new Rain();
+  // In the draw function below, call the ghost's draw() method
+  // Do you see your ghost?
+  
+  // DRAWING THE RAIN
+  //
+  // Create a new variable for the rain at the top of this sketch
+  // then initialize it to new Rain(color)
+  //   example: rainfall = new Rain();
+  rainfall = new Rain(#ADD8E6);
+  
+  // In the draw function below, call the rain's draw() method
+  // Do you see rain falling?
+  
+  // DRAWING THE LIGHTNING
+  //
+  // Create a new variable for the lightning at the top of this
+  // sketch then initialize it to new Lightning()
+  //   example: lightning = new Lightning();
   lightning = new Lightning();
+  
+  // In the draw function below, call the lightnings's draw()
+  // method ONLY when the mouse is pressed
+  // Do you see the lightning?
+  
+  // DRAWING THE SPOTLIGHT
+  //
+  // Create a new variable for the spotlight at the top of this
+  // sketch then initialize it to new Spotlight()
+  //   example: spotlight = new Spotlight();
   spotlight = new Spotlight();
 }
 
 void draw() {
-  // 5. Call background() with your scary house as an input parameter
+  drawBackground(scaryHouse);
   
-  // 6. Call the drawFloor() method
+  pumpkin1.draw();
+  pumpkin2.draw();
+  pumpkin3.draw();
   
-  // 7. Call pumpkin1.draw(false) to draw a pumpkin.
-  //    Can you figure out how to make the pumpkin bounce by changing
-  //    the input parameter when calling draw()?
-  //
-  //    Make at least 2 more new pumpkins. To do this, create new pumpkin 
-  //    variables above the setup() method and then initialize them
-  //    in setup(). Remember to call their draw() methods here so they appear!
+  ghost1.draw();
+  ghost2.draw();
+  ghost3.draw();
+  
+  rainfall.draw();
+  
+  if( mousePressed ){
+    lightning.draw();
+  }
+  
+  if( keyPressed ){
+    if( keyCode == LEFT ){
+      pumpkin1.moveLeft(5);
+    } else if( keyCode == RIGHT ){
+      pumpkin1.moveRight(5);
+    } else if( keyCode == UP ){
+      pumpkin1.bounce();
+    } else if(keyCode == DOWN ){
+      pumpkin1.stop();
+    }
+    
+    if( key == 'g' ){
+      grayscale = !grayscale;
+    } else if( key == 'a' ){
+      spotlight.setSpotlightSize(spotlight.getSize() + 3);
+    } else if( key == 's' ){
+      spotlight.setSpotlightSize(spotlight.getSize() - 3);
+    } else if( key == 32 ){
+      spotlight.draw();
+    }
+  }
+  
+  if( grayscale ) {
+    drawGrayscale(true);
+  }
+  
+  // DRAWING THE HAPPY HALLOWEEN MESSAGE!
+  // Display "Happy Halloween" somewhere on your display.
+  // *hint* you can use text(), textSize(), and fill()
 
-  // 8. Call ghost1.draw() to draw a ghost.
-  //    Make at least 2 more new ghosts to fly across the screen.
-  //    To do this, create new ghost variables above the setup() method 
-  //    and then initialize them in setup(). Remember to call their draw()
-  //    methods here so they appear!
-  
-  // 9. Call rainfall.draw( <rainColor> ) to add rain.
-  //    Call playRainSounds() to add the sound of rain!
-  
-  // 10. Display "Happy Halloween" somewhere on your display.
-  //     *hint* you can use text(), textSize(), and fill()
-  
-  // 11. Call lightning.draw() to draw some lightning;
-  //     Can you make lightning crash only when the mouse is pressed?
   
   // Try out the other scary house backgrounds and customize
   // your scary house!
@@ -110,16 +154,23 @@ void draw() {
   
   // ---------------------------------------------------------
   // Here are some other methods you can try:
-  //  pumpkin1.setPumpkinColor();
-  //  pumpkin1.setPumpkinStartHeight();
-  //  pumpkin1.moveRight();
-  //  pumpkin1.moveLeft();
-  //  ghost1.setGhostTransparency();
+  //  pumpkin.setPumpkinColor();
+  //  pumpkin.bounce();
+  //  pumpkin.stop();
+  //  pumpkin.setBounceHeight();
+  //  pumpkin.moveRight();
+  //  pumpkin.moveLeft();
+  //  ghost.setGhostTransparency();
   //  lightning.setLightningFlash();
   //  rainfall.setAmountOfRain();
   //  spotlight.setPixelSize();
   //  spotlight.setSpotlightSize();
   // ---------------------------------------------------------
+}
+
+void drawBackground(PImage bgImage){
+  background(bgImage);
+  drawFloor();
 }
 
 void drawFloor(){

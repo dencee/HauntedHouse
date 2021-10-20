@@ -1,6 +1,6 @@
 public class Spotlight {
   private ArrayList<Pixel> pixelList;
-  private int pixelSize = 4;
+  private int pixelSize = 1;
   private int spotlightSizePixels = 150;
   private PImage darkness = null;
   private PGraphics spotlightMask = null;
@@ -33,6 +33,10 @@ public class Spotlight {
   // Sets the spotlight ellipse size
   public void setSpotlightSize( int sizePixels ) {
     this.spotlightSizePixels = sizePixels;
+  }
+  
+  public int getSize(){
+    return this.spotlightSizePixels;
   }
 
   void initializePixels() {
