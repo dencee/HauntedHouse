@@ -99,7 +99,11 @@ void draw() {
   rainfall.draw();
   
   if( mousePressed ){
-    lightning.draw();
+    if( mouseButton == LEFT ){
+      lightning.draw();
+    } else if( mouseButton == RIGHT ){
+      spotlight.draw();
+    }
   }
   
   if( keyPressed ){
@@ -119,9 +123,7 @@ void draw() {
       spotlight.setSpotlightSize(spotlight.getSize() + 3);
     } else if( key == 's' ){
       spotlight.setSpotlightSize(spotlight.getSize() - 3);
-    } else if( key == 32 ){
-      spotlight.draw();
-    }
+    } 
   }
   
   if( grayscale ) {
