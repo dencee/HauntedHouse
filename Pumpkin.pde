@@ -2,6 +2,8 @@ public class Pumpkin {
   private int x;
   private int y;
   private int xSpeed = 0;
+  private boolean bounce = false;
+  private int bounceHeight = 30;
   private int bounceSpeed = 0;
   private int gravity = 1;
   private int pumpkinColor;
@@ -23,8 +25,17 @@ public class Pumpkin {
   // Call this method from the setup() method,
   // NOT the draw() method
   // ---------------------------------------------------------
-  public void setPumpkinStartHeight( int newHeightInPixels ){
-    this.y = newHeightInPixels;
+  public void setBounceHeight( int newHeightInPixels ){
+    this.bounceHeight = newHeightInPixels;
+  }
+  
+  public void bounce(){
+    this.bounce = true;
+  }
+  
+  public void stop(){
+    this.bounce = false;
+    this.xSpeed = 0;
   }
   
   public void moveRight( int speed ){
@@ -35,19 +46,22 @@ public class Pumpkin {
     this.xSpeed = -speed;
   }
 
-  public void draw(boolean bounce) {
+  public void draw(){
     push(); 
 
-    bounceSpeed += gravity;
-    y += bounceSpeed ;
+    if( bounceSpeed < bounceHeight ){
+      bounceSpeed += gravity;
+    }
+    
+    y += bounceSpeed;
 
-    if (this.y > height - 100) {
+    if( this.y > height - 100 ) {
       this.y = height - 100;
 
-      if ( bounce ) {
+      if( bounce ) {
         bounceSpeed = -bounceSpeed;
       }
-    }    
+    }
     
     this.x += xSpeed;
     

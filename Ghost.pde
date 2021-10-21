@@ -31,7 +31,7 @@ public class Ghost {
     if( direction.equalsIgnoreCase("left") ){
       // Ghost goes right to left
       
-      //flip on X axis
+      // Flip on X axis
       scale(-1,1);
       image(ghostImg, -this.x, this.y);
       

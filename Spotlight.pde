@@ -1,6 +1,6 @@
 public class Spotlight {
   private ArrayList<Pixel> pixelList;
-  private int pixelSize = 4;
+  private int pixelSize = 1;
   private int spotlightSizePixels = 150;
   private PImage darkness = null;
   private PGraphics spotlightMask = null;
@@ -22,7 +22,7 @@ public class Spotlight {
       spotlightMask = createGraphics(width, height);
     }
   }
-  
+
   // Sets how pixelated the spotlight view is; 1 to 9
   // 1 = no pixelization
   // 9 = high pixelization (large pixels)
@@ -33,6 +33,10 @@ public class Spotlight {
   // Sets the spotlight ellipse size
   public void setSpotlightSize( int sizePixels ) {
     this.spotlightSizePixels = sizePixels;
+  }
+  
+  public int getSize(){
+    return this.spotlightSizePixels;
   }
 
   void initializePixels() {

@@ -1,9 +1,8 @@
 public class Lightning {
   private float chaos = 0.25;
   private ArrayList<PVector> points;
-  private boolean lightningFlash = true;
+  private boolean lightningFlash = false;
 
-  // Inverts colors when lightning crashes
   void setLightningFlash(boolean flash) {
     this.lightningFlash = flash;
   }
@@ -32,7 +31,8 @@ public class Lightning {
 
   void drawLightning() {
     push();
-
+    noStroke();
+    
     PVector p1 = new PVector(random(width), 0);
     PVector p2 = new PVector(random(width), height);
 
