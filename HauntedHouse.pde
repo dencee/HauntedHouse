@@ -101,7 +101,8 @@ void draw() {
   if( mousePressed ){
     if( mouseButton == LEFT ){
       lightning.draw();
-    } else if( mouseButton == RIGHT ){
+    }
+    if( mouseButton == RIGHT ){
       spotlight.draw();
     }
   }
@@ -133,7 +134,11 @@ void draw() {
   // DRAWING THE HAPPY HALLOWEEN MESSAGE!
   // Display "Happy Halloween" somewhere on your display.
   // *hint* you can use text(), textSize(), and fill()
-
+  textSize(100);
+  fill(#08FF3F);
+  strokeWeight(50); stroke(0);
+  text("HAPPY HALLOWEEN!", 100, 300);
+  
   
   // Try out the other scary house backgrounds and customize
   // your scary house!

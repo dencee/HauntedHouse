@@ -31,13 +31,14 @@ public class Lightning {
 
   void drawLightning() {
     push();
-
+    
     PVector p1 = new PVector(random(width), 0);
     PVector p2 = new PVector(random(width), height);
 
     points = chaoticPoints(p1.x, p1.y, p2.x, p2.y, chaos);
     points.add(p2);
 
+    noStroke();
     stroke(64, 46, 255, 32);
     strokeWeight(32);
     drawChaoticLine(points);
