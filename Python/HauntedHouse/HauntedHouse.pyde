@@ -104,7 +104,7 @@ def draw():
     #  pumpkin.stop()
     #  pumpkin.move_right()
     #  pumpkin.move_left()
-    #  ghost.setGhostTransparency()
+    #  ghost.set_ghost_transparency()
     #  lightning.set_lightning_flash()
     #  rainfall.set_amount_of_rain()
     #  spotlight.set_pixel_size()

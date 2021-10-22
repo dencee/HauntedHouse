@@ -9,7 +9,7 @@ class Ghost:
         self.transparency = 125
 
     # 0 = most transparent; 100 = most opaque
-    def setGhostTransparency(self, transparency):
+    def set_ghost_transparency(self, transparency):
         # Normalize value from 0-255
         this.transparency = ( 255 - ( ( transparency * 255 ) / 100 ) )
 
