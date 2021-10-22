@@ -76,6 +76,7 @@ def setup():
     #   example: lightning = Lightning()
     global lightning
     lightning = Lightning()
+    lightning.set_lightning_flash()
   
     # In the draw function below, call the lightnings's draw()
     # method ONLY when the mouse is pressed
@@ -129,7 +130,8 @@ def draw():
             pumpkin1.stop()
     
         if key == 'g':
-            grayscale = not grayscale
+            global gray
+            gray = not gray
         elif key == 'a':
             spotlight.set_size(spotlight.get_size() + 3)
         elif key == 's':
@@ -170,7 +172,7 @@ def draw():
     #  lightning.set_lightning_flash()
     #  rainfall.set_amount_of_rain()
     #  spotlight.set_pixel_size()
-    #  spotlight.set_spotlight_size()
+    #  spotlight.set_size()
     # ---------------------------------------------------------
 
 def draw_background(bg_image):

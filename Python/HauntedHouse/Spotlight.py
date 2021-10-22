@@ -22,8 +22,11 @@ class Spotlight:
     def set_pixel_size(self, new_size):
         self.pixel_size = new_size
         
-    def set_spotlight_size(self, new_size):
+    def set_size(self, new_size):
         Spotlight.SPOTLIGHT_SIZE_PIXELS = new_size
+        
+    def get_size(self):
+        return Spotlight.SPOTLIGHT_SIZE_PIXELS
 
     def initialize_pixels(self):
         for i in range(0, width, self.pixel_size):
